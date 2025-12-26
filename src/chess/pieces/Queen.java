@@ -1,11 +1,12 @@
 package chess.pieces;
 
-import chess.ChessPiece;
-import chess.Color;
 import boardgame.Board;
 import boardgame.Position;
+import chess.ChessPiece;
+import chess.Color;
 
 public class Queen extends ChessPiece {
+
     public Queen(Board board, Color color) {
         super(board, color);
     }
@@ -46,6 +47,9 @@ public class Queen extends ChessPiece {
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
             p.setColumn(p.getColumn() +1);
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
         }
 
         //below
